@@ -4,133 +4,118 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>LODI SAFETY</title>
-
-  <!-- Bootstrap 5 CDN -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-  <!-- Animate.css -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-
-  <!-- Custom Styles -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
   <style>
     :root {
       --gold: #d4af37;
       --dark: #1a1a1a;
       --light: #f9f9f9;
     }
-
     html, body {
-      height: 100%;
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background-color: var(--light);
-      color: var(--dark);
       scroll-behavior: smooth;
     }
-
     .navbar {
       background-color: var(--dark);
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
     }
-
-    .navbar-brand,
-    .nav-link {
+    .navbar-brand, .nav-link {
       color: var(--gold) !important;
       font-weight: 500;
     }
-
-    .nav-link:hover {
-      color: #ffffff !important;
+    .navbar-brand img {
+      height: 40px;
+      margin-right: 10px;
     }
-
+    .nav-link:hover {
+      color: white !important;
+    }
     section {
       min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      padding: 60px 15px;
+      padding: 100px 20px 60px;
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+      margin-top: 56px;
     }
-
     .hero {
       background: var(--dark);
       color: white;
       text-align: center;
     }
-
     .hero h1 {
       font-size: 3.5rem;
       font-weight: bold;
       color: var(--gold);
     }
-
-    .hero p {
-      font-size: 1.25rem;
-      margin-top: 10px;
-    }
-
     .section-title {
       color: var(--gold);
-      margin-bottom: 1rem;
-      text-align: center;
       font-weight: bold;
+      margin-bottom: 20px;
+      text-align: center;
     }
-
     .icon-box {
       background: var(--gold);
       color: var(--dark);
       padding: 20px;
       border-radius: 8px;
       text-align: center;
-      height: 100%;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      transition: transform 0.3s ease-in-out;
+      transition: transform 0.3s;
     }
-
     .icon-box:hover {
       transform: translateY(-8px);
     }
-
+    .gallery img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+    .email-box {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      max-width: 600px;
+      margin: auto;
+    }
     footer {
       background: var(--dark);
       color: var(--gold);
       text-align: center;
       padding: 20px 0;
     }
-
     footer a {
       color: var(--gold);
       margin: 0 10px;
       font-size: 1.2rem;
     }
-
     footer a:hover {
       color: white;
-    }
-
-    .email-box {
-      background: white;
-      border-radius: 10px;
-      padding: 30px;
-      max-width: 600px;
-      width: 100%;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-    }
-
-    .email-box input,
-    .email-box textarea {
-      width: 100%;
-      margin-bottom: 15px;
     }
   </style>
 </head>
 <body data-bs-spy="scroll" data-bs-target="#mainNav">
 
-  <!-- NAVIGATION -->
-  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <!-- NAVBAR -->
+  <nav id="mainNav" class="navbar navbar-expand-lg navbar-dark">
     <div class="container">
-      <a class="navbar-brand animate__animated animate__fadeInDown" href="#">LODI SAFETY</a>
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="assets/img/logo.jpeg" alt="Logo">
+        LODI SAFETY
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -139,9 +124,7 @@
           <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
           <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#goals">Goals</a></li>
-          <li class="nav-item"><a class="nav-link" href="#vision">Vision</a></li>
-          <li class="nav-item"><a class="nav-link" href="#mission">Mission</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
           <li class="nav-item"><a class="nav-link" href="#process">Process</a></li>
           <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
         </ul>
@@ -152,18 +135,34 @@
   <!-- HERO -->
   <section id="home" class="hero">
     <div class="container">
-      <h1 class="animate__animated animate__bounceInDown">WELCOME TO LODI SAFETY</h1>
+      <h1 class="animate__animated animate__fadeInDown">WELCOME TO LODI SAFETY</h1>
       <p class="lead animate__animated animate__fadeInUp">Empowering safer environments through elite consulting & tech-driven EHS systems.</p>
     </div>
   </section>
 
-  <!-- ABOUT -->
+  <!-- ABOUT + VISION + MISSION + GOALS -->
   <section id="about">
     <div class="container">
       <h2 class="section-title">About Us</h2>
-      <p>
-        LODI SAFETY is a trusted Environmental Health and Safety consulting company. We help organizations meet compliance, implement EHS programs, and create safer working environments. Our team brings decades of experience across industries from mining and construction to corporate and food services.
-      </p>
+      <p>LODI SAFETY is a trusted Environmental Health and Safety consulting company. We help organizations meet compliance, implement EHS programs, and create safer working environments.</p>
+      <div class="row mt-4">
+        <div class="col-md-6">
+          <h4>Vision</h4>
+          <p>To be Africa’s leading provider of Environmental Health & Safety services—known for innovation, reliability, and excellence.</p>
+        </div>
+        <div class="col-md-6">
+          <h4>Mission</h4>
+          <p>We empower businesses to protect people, meet regulations, and build a culture of safety through training, consulting, and digital tools.</p>
+        </div>
+      </div>
+      <div class="mt-4">
+        <h4>Our Goals</h4>
+        <ul>
+          <li>Become South Africa’s #1 EHS Consultancy</li>
+          <li>Expand across the African continent</li>
+          <li>Launch a proprietary EHS software suite</li>
+        </ul>
+      </div>
     </div>
   </section>
 
@@ -172,60 +171,24 @@
     <div class="container">
       <h2 class="section-title">Our Services</h2>
       <div class="row g-4">
-        <div class="col-md-4">
-          <div class="icon-box animate__animated animate__zoomIn">
-            <i class="fas fa-search fa-2x mb-2"></i>
-            <h5>Auditing</h5>
-            <p>Assess current safety performance & compliance gaps.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="icon-box animate__animated animate__zoomIn animate__delay-1s">
-            <i class="fas fa-cogs fa-2x mb-2"></i>
-            <h5>Implementation</h5>
-            <p>Deploy ISO 9001/14001/45001 aligned safety systems.</p>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="icon-box animate__animated animate__zoomIn animate__delay-2s">
-            <i class="fas fa-shield-alt fa-2x mb-2"></i>
-            <h5>Risk Assessments</h5>
-            <p>Hazard identification and control planning.</p>
-          </div>
-        </div>
+        <div class="col-md-4"><div class="icon-box"><i class="fas fa-search fa-2x mb-2"></i><h5>Auditing</h5><p>Evaluate your current safety compliance and gaps.</p></div></div>
+        <div class="col-md-4"><div class="icon-box"><i class="fas fa-cogs fa-2x mb-2"></i><h5>Implementation</h5><p>Roll out ISO-based systems for lasting safety change.</p></div></div>
+        <div class="col-md-4"><div class="icon-box"><i class="fas fa-shield-alt fa-2x mb-2"></i><h5>Risk Assessment</h5><p>Identify hazards, reduce exposure, and stay protected.</p></div></div>
       </div>
     </div>
   </section>
 
-  <!-- GOALS -->
-  <section id="goals">
+  <!-- GALLERY -->
+  <section id="gallery">
     <div class="container">
-      <h2 class="section-title">Our Goals</h2>
-      <ul>
-        <li>Become South Africa’s #1 EHS Consultancy.</li>
-        <li>Expand our services across the African continent.</li>
-        <li>Launch our own EHS management software suite.</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- VISION -->
-  <section id="vision" class="bg-light">
-    <div class="container">
-      <h2 class="section-title">Vision</h2>
-      <p>
-        Our vision is to be Africa’s leading provider of Environmental Health & Safety services—known for innovation, reliability, and excellence. We aim to build a safer future through proactive compliance.
-      </p>
-    </div>
-  </section>
-
-  <!-- MISSION -->
-  <section id="mission">
-    <div class="container">
-      <h2 class="section-title">Mission</h2>
-      <p>
-        We empower businesses to protect people, meet regulations, and build a culture of safety. Through training, consulting, and digital tools, we make safety part of every organization’s DNA.
-      </p>
+      <h2 class="section-title">Gallery</h2>
+      <div class="row g-4 gallery">
+        <div class="col-md-4"><img src="assets/img/logo.jpeg" alt="Logo"></div>
+        <div class="col-md-4"><img src="assets/img/Goal1.jpg" alt="Goal1"></div>
+        <div class="col-md-4"><img src="assets/img/Goal2.jpg" alt="Goal2"></div>
+        <div class="col-md-4"><img src="assets/img/a.jpg" alt="Image A"></div>
+        <div class="col-md-4"><img src="assets/img/b.jpg" alt="Image B"></div>
+      </div>
     </div>
   </section>
 
@@ -236,14 +199,14 @@
       <div class="row g-4">
         <div class="col-md-4"><div class="icon-box"><h5>#1 Assessment</h5><p>Identify what’s working and what’s missing.</p></div></div>
         <div class="col-md-4"><div class="icon-box"><h5>#2 Action Plan</h5><p>Deliver a roadmap to reach full compliance.</p></div></div>
-        <div class="col-md-4"><div class="icon-box"><h5>#3 Follow-Up</h5><p>Ensure sustainable results and best practice.</p></div></div>
+        <div class="col-md-4"><div class="icon-box"><h5>#3 Follow-Up</h5><p>Ensure sustainable results and best practices.</p></div></div>
       </div>
     </div>
   </section>
 
   <!-- CONTACT -->
-  <section id="contact" class="text-center">
-    <div class="container">
+  <section id="contact">
+    <div class="container text-center">
       <h2 class="section-title">Contact Us</h2>
       <p><i class="fas fa-phone-alt"></i> <strong>067 764 4834</strong></p>
       <p><i class="fas fa-envelope"></i> <strong>lodisafety@gmail.com</strong></p>
@@ -264,14 +227,13 @@
     <div class="container">
       <p>&copy; 2025 LODI SAFETY. All Rights Reserved.</p>
       <div>
-        <a href="https://facebook.com"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://linkedin.com"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://instagram.com"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
     </div>
   </footer>
 
-  <!-- Bootstrap JS Bundle -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
